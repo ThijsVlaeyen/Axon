@@ -1,14 +1,16 @@
-.nav-icon {
+.nav-span {
     font-size: 1.5em;
 }
 
-#nav-icon {
+#icon-span {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    height: 70%;
     width: 100%;
+}
 
+.nav-icon {
     -webkit-background-clip: text;
     background-clip: text;
 	-webkit-text-fill-color: transparent;

@@ -77,8 +77,11 @@ function updateBackground(imageUri, callback) {
         ctx.drawImage(img, 0, 0);
         let dominantColor = colorThief.getColor(img);
         document.body.style.background = `linear-gradient(#1cc458, rgb(${dominantColor[0]}, ${dominantColor[1]}, ${dominantColor[2]}))`;
-        document.getElementById('nav-icon').style.backgroundImage  = `-webkit-gradient(linear, left top, left bottom, from(#1cc458), to(rgb(${dominantColor[0]}, ${dominantColor[1]}, ${dominantColor[2]})))`;
-        //document.getElementById('nav-icon').style.color = 'red';
+        const navIcons = document.querySelectorAll('.nav-icon');
+        navIcons.forEach(navIcon => {
+            navIcon.style.backgroundImage = `-webkit-gradient(linear, left top, left bottom, from(#1cc458), to(rgb(${dominantColor[0]}, ${dominantColor[1]}, ${dominantColor[2]})))`;
+        });
+        
         callback(dominantColor);
     };
     
