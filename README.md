@@ -1,6 +1,6 @@
-# WhistleWarden
+# Ankathi
 
-WhistleWarden is a Flask-based web application that tracks the Spotify songs played in our office and logs the ones our boss whistles along to! This fun project integrates with the Spotify API and uses a lightweight SQLite database to store song history.
+Ankathi is a Flask-based web application that tracks the Spotify songs played in our office and logs the ones our boss whistles along to! This fun project integrates with the Spotify API and uses a lightweight SQLite database to store song history.
 
 ## Features
 

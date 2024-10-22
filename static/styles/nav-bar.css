@@ -6,11 +6,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 70%;
+    height: 80%;
     width: 100%;
 }
 
-.nav-icon {
+.nav-icon, .nav-icon-180 {
     -webkit-background-clip: text;
     background-clip: text;
 	-webkit-text-fill-color: transparent;
