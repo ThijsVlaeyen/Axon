@@ -1,0 +1,112 @@
+html, body {
+    min-height: 100%;
+
+    padding:0;
+    margin:0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #00A86B;
+
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 1.2rem;
+}
+
+.grid-spacer {
+    width: 100%;
+    height: auto;
+    display: grid;
+
+    grid-template-columns: 7% auto 7%;
+    grid-template-rows: 4.5em 1em auto;
+
+    padding: 0;
+    margin: 0;
+}
+
+.grid-container {
+    grid-column-start: 2;
+    grid-row-start: 3;
+
+    display: grid;
+    grid-template-columns: 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5%;
+    
+    column-gap: 0.5em;
+    row-gap: 0.5em;
+    padding: 1em 4.5em 1em 1em;
+
+    background-color: rgba(22, 22, 22, .75);
+    border-radius: 15px;
+    box-shadow: 5px 1px 80px #121212;
+}
+
+.grid-container.statistic {
+    column-gap: 0.25em;
+    row-gap: 0.25em;
+    padding: .5em;
+    grid-template-columns: 7rem auto 7rem 11rem;
+}
+
+.indicator {
+    height: 50px;
+    width: auto;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    background-color: rgba(128, 128, 128, 0.2);
+    padding: 0 0.5rem 0 0.5rem;
+}
+
+.song-text {
+    font-family: 'Impact', sans-serif;
+    font-size: 1.5rem;
+    background: linear-gradient(170deg,#ffffff, #b0ffc1,#1cc458);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.ultimate {
+    background: linear-gradient(135deg, #ff4500, #ff6347, #ff9900, #ff6347, #ff4500);
+    background-size: 400% 400%;
+    animation: flameMove 5s linear infinite;
+    color: rgb(5, 6, 45);
+    font-size: 1.25em;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+@keyframes flameMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+  
+.standard {
+    background: linear-gradient(15deg, #818181, #b3b3b3, #fff, #b3b3b3, #818181); 
+    background-size: 400% 400%;
+    animation: silverMove 5s linear infinite;
+    box-shadow: 0 5px 20px rgba(169, 169, 169, 0.5);
+    color: rgb(5, 6, 45);
+    font-size: 1.25em;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+@keyframes silverMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+.right {
+    justify-content: right;
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Spotify Tracker</title>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/nav-bar.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/status-radio.css') }}">
+    </head>
+<body>
+    <div class="grid-spacer">
+        <div class="nav-icon" >
+            <i id="nav-icon" class="fa-solid fa-dragon fa-flip-horizontal fa-2xl"></i>
+            <img id="trackImage" src="" style="display: none;"/>
+            <canvas id="canvas" style="display: none;"></canvas>
+        </div>
+        <div class="nav-bar" style="grid-column: span 2; display: flex; justify-content: space-between;">
+            <nav>
+                <ul>
+                    <li class="dropdown">
+                        <a href="{{ url_for('home') }}" class="dropbtn">Spotify</a>
+                        <div class="dropdown-content">
+                            <a href="{{ url_for('home') }}">Overview</a>
+                            <a href="{{ url_for('hist_bp.history') }}">History</a>
+                            <a href="{{ url_for('over_bp.statistics') }}">Statistics</a>
+                        </div>
+                    </li>
+                    <li><a href="#">WIP</a></li>
+                </ul>
+            </nav><div class="spotify-embed"></div>
+        </div>
+        <div class="grid-container statistic" id="song-list">
+        </div>
+    </div>
+
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+    <script src="{{ url_for('static', filename='js/fetch-song.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/history-list.js') }}"></script>
+</body>
+</html>

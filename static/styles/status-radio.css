@@ -1,0 +1,61 @@
+.status-radio-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.radio-button-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 8px;
+    padding: 3px;
+    width: 100%;
+    height: 1.75em;
+    text-align: center;
+    transition: 300ms;
+    margin: .125em;
+}
+
+.radio-button-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.radio-button-container span {
+    background-color: rgb(5, 6, 45);
+    color: rgb(5, 6, 45);
+    padding: 10px;
+    border-radius: 6px;
+    width: 100%;
+    height: 0.8em;
+    transition: 300ms;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.whistle {
+    background-image: linear-gradient(155deg,rgb(5, 6, 45) 10%, #186118 35%,#1cc458 65%)
+}
+
+.no-whistle {
+    background-image: linear-gradient(155deg, rgb(5, 6, 45) 10%, #611818 35%, #c41c1c 65%);
+}
+
+.ignored {
+    background-image: linear-gradient(155deg, rgb(5, 6, 45) 10%, #615a18 35%, #c4c11c 65%);
+}
+
+.radio-button-container input:checked + span {
+    background: none;
+    color: rgb(5, 6, 45);
+}
+
+.radio-button-container:hover span {
+    background: none;
+    color: rgb(5, 6, 45);
+}
