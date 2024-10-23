@@ -1,7 +1,7 @@
 import time
 
 from models import add_or_update_song
-from .auth_services import get_spotify_client
+from .auth_services import get_spotify_client, get_all_users, set_active_user
 from .history_services import get_status
 
 NORMAL_PLAYLIST_ID = '3GZfgYCgUg97eFYkeg7Pmm'
@@ -66,9 +66,20 @@ def update_current_track():
     while True:
         try:
             print("Getting song...")
-            sp = get_spotify_client('Thijs')
-            received_track = sp.current_playback()
+            users = get_all_users()
             
+            for user in users:
+                sp = get_spotify_client(user['name'])
+                received_track = sp.current_playback()
+
+                if received_track is not None and received_track['is_playing'] and received_track['device']['name'] == 'Kantoor':
+                    set_active_user(user['name'])
+                    break
+            
+            if received_track is None or not received_track['is_playing'] or not received_track['device']['name'] == 'Kantoor':
+                time.sleep(30)
+                continue
+
             if not current_track or received_track['item']['id'] != current_track['item']['id']:
                 current_track = received_track
                 track_features = sp.audio_features(current_track['item']['id'])[0]

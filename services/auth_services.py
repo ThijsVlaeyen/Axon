@@ -4,6 +4,27 @@ from datetime import datetime, timedelta
 
 from database import get_db_connection
 
+def get_all_users():
+    conn = get_db_connection()
+    users = conn.execute("SELECT * FROM spotify_accounts ORDER BY active DESC").fetchall()
+    conn.close()
+    return users
+
+def set_active_user(name):
+    conn = get_db_connection()
+
+    conn.execute("""
+        UPDATE spotify_accounts SET active = false
+        """)
+
+    conn.execute("""
+        UPDATE spotify_accounts SET active = true WHERE name = ?
+        """, (name,))
+
+    conn.commit()
+    conn.close()
+    return
+
 def _get_spotify_token(user_name):
     from app import app
     conn = get_db_connection()
@@ -47,7 +68,7 @@ def _get_spotify_token(user_name):
     conn.close()
     return access_token
 
-def get_spotify_client(user_name): #TODO move to auth
+def get_spotify_client(user_name):
     token = _get_spotify_token(user_name)
     sp = spotipy.Spotify(auth=token)
     return sp

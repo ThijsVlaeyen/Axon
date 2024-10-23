@@ -9,6 +9,16 @@ Ankathi is a Flask-based web application that tracks the Spotify songs played in
 - **Song History**: Stores and manages song history in an SQLite database.
 - **Multiple Accounts**: Support for tracking multiple Spotify accounts.
 
+## TODO
+
+- [ ] Refactor models/database architecture
+- [ ] Finish spotify authentication page / refactor services
+- [ ] Start statistics screen
+- [ ] Only ask questions between 8AM and 17PM
+- [ ] Clean up overview screen
+- [ ] Visualise data?
+- [ ] Predictive model for whistle chance
+
 ## Technologies Used 
 
 - **Flask**: Backend framework for routing and server-side logic.

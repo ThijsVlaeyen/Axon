@@ -65,15 +65,15 @@ async function fetchSongs() {
                 sta.innerHTML = `
                     <div class="status-radio-buttons">
                         <label class="radio-button-container ignored">
-                            <input type="radio" name="status-${song['song_id']}" value="3" ${song['status_name'] == 'ignore' ? 'checked' : ''} onClick="updateWhistle(${song['statistics_id']}, 3)">
+                            <input type="radio" name="status-${song['statistics_id']}" value="3" ${song['status_name'] == 'ignore' ? 'checked' : ''} onClick="updateWhistle(${song['statistics_id']}, 3)">
                             <span class="text"><i class="fa-solid fa-circle-stop"></i></span>
                         </label>
                         <label class="radio-button-container no-whistle">
-                            <input type="radio" name="status-${song['song_id']}" value="2" ${song['status_name'] == 'no-whistle' ? 'checked' : ''} onClick="updateWhistle(${song['statistics_id']}, 2)">
+                            <input type="radio" name="status-${song['statistics_id']}" value="2" ${song['status_name'] == 'no-whistle' ? 'checked' : ''} onClick="updateWhistle(${song['statistics_id']}, 2)">
                             <span class="text"><i class="fa-solid fa-circle-xmark"></i></span>
                         </label>
                         <label class="radio-button-container whistle">
-                            <input type="radio" name="status-${song['song_id']}" value="1" ${song['status_name'] == 'whistle' ? 'checked' : ''} onClick="updateWhistle(${song['statistics_id']}, 1)">
+                            <input type="radio" name="status-${song['statistics_id']}" value="1" ${song['status_name'] == 'whistle' ? 'checked' : ''} onClick="updateWhistle(${song['statistics_id']}, 1)">
                             <span class="text"><i class="fa-solid fa-circle-check"></i></span>
                         </label>
                     </div>`;

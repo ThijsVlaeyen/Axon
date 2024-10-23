@@ -1,16 +1,16 @@
-from flask import Blueprint, request, redirect
-import requests
-
-from datetime import datetime, timedelta
+from flask import Blueprint, request, redirect, render_template
 
 from services.auth_services import *
-from database import get_db_connection
 
 auth_bp = Blueprint('auth_bp', __name__)
 
 @auth_bp.route('/authorize')
 def handle_authorize():
     return redirect(authorize_url())
+
+@auth_bp.route('/authenticate')
+def authenticate():
+    return render_template('authenticate.html')
 
 @auth_bp.route('/callback')
 def handle_callback():
