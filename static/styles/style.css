@@ -45,11 +45,16 @@ body {
     box-shadow: 5px 1px 80px #121212;
 }
 
-.grid-container.statistic {
+.grid-container.history {
     column-gap: 0.25em;
     row-gap: 0.25em;
     padding: .5em;
     grid-template-columns: 7rem auto 7rem 11rem;
+}
+
+.grid-container.statistic {
+    padding: .5em;
+    grid-template-columns: 100%;
 }
 
 .indicator {

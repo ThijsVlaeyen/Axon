@@ -7,9 +7,23 @@
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
 
+        <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
         <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
         <link rel="stylesheet" href="{{ url_for('static', filename='styles/nav-bar.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/statistics-table.css') }}">
+        
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('#statisticsTable').DataTable({
+                    paging: true,
+                    searching: true,
+                    order: [[5, 'desc']]
+                });
+            });
+        </script>
     </head>
 <body>
     <div class="grid-spacer">
@@ -37,8 +51,31 @@
                 </ul>
             </nav><div class="spotify-embed"></div>
         </div>
-        <div class="grid-container">
-            
+        <div class="grid-container statistic">
+            <table id="statisticsTable" class="display">
+                <thead>
+                    <tr>
+                        <th class="song-text">Artist</th>
+                        <th class="song-text">Title</th>
+                        <th class="song-text">Whistles</th>
+                        <th class="song-text">Active plays</th>
+                        <th class="song-text">Total plays</th>
+                        <th class="song-text">Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in data %}
+                    <tr>
+                        <td class="song-text">{{ item.artist }}</td>
+                        <td class="song-text">{{ item.title }}</td>
+                        <td class="song-text">{{ item.whistle }}</td>
+                        <td class="song-text">{{ item.active }}</td>
+                        <td class="song-text">{{ item.total }}</td>
+                        <td class="song-text">{{ item.score }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         </div>
     </div>
    
