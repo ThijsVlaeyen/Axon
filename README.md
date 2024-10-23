@@ -12,12 +12,14 @@ Ankathi is a Flask-based web application that tracks the Spotify songs played in
 ## TODO
 
 - [ ] Refactor models/database architecture
-- [ ] Finish spotify authentication page / refactor services
-- [ ] Start statistics screen
+- [ ] Finish spotify authentication page / refactor auth_services
+- [x] Start statistics screen
+- [ ] Clean up statistics screen
 - [ ] Only ask questions between 8AM and 17PM
 - [ ] Clean up overview screen
 - [ ] Visualise data?
 - [ ] Predictive model for whistle chance
+- [ ] Security whitelist
 
 ## Technologies Used 
 

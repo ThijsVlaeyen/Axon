@@ -7,6 +7,7 @@
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
 
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
         <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
@@ -20,7 +21,71 @@
                 $('#statisticsTable').DataTable({
                     paging: true,
                     searching: true,
-                    order: [[5, 'desc']]
+                    order: [[5, 'desc']],
+                    drawCallback: function() {
+                        var api = this.api();
+
+                        // Function to sum column data
+                        var intVal = function(i) {
+                            return typeof i === 'string' ?
+                                i.replace(/[\$,]/g, '')*1 :
+                                typeof i === 'number' ?
+                                i : 0;
+                        };
+
+                        // Total of 'whistle' column (3rd column in the table)
+                        var totalWhistle = api
+                            .column(2)
+                            .data()
+                            .reduce(function(a, b) {
+                                return intVal(a) + intVal(b);
+                            }, 0);
+
+                        // Total of 'active' column (4th column in the table)
+                        var totalActive = api
+                            .column(3)
+                            .data()
+                            .reduce(function(a, b) {
+                                return intVal(a) + intVal(b);
+                            }, 0);
+
+                        // Total of 'total' column (5th column in the table)
+                        var totalTotal = api
+                            .column(4)
+                            .data()
+                            .reduce(function(a, b) {
+                                return intVal(a) + intVal(b);
+                            }, 0);
+
+                        // Page total of 'whistle' column (3rd column in the table)
+                        var pageTotalWhistle = api
+                            .column(2, { page: 'current' })
+                            .data()
+                            .reduce(function(a, b) {
+                                return intVal(a) + intVal(b);
+                            }, 0);
+
+                        // Page total of 'active' column (4th column in the table)
+                        var pageTotalActive = api
+                            .column(3, { page: 'current' })
+                            .data()
+                            .reduce(function(a, b) {
+                                return intVal(a) + intVal(b);
+                            }, 0);
+
+                        // Page total of 'total' column (5th column in the table)
+                        var pageTotalTotal = api
+                            .column(4, { page: 'current' })
+                            .data()
+                            .reduce(function(a, b) {
+                                return intVal(a) + intVal(b);
+                            }, 0);
+
+                        // Update footer with totals and page totals
+                        $('#totalWhistle').html(totalWhistle + ' (' + pageTotalWhistle + ')');
+                        $('#totalActive').html(totalActive + ' (' + pageTotalActive + ')');
+                        $('#totalTotal').html(totalTotal + ' (' + pageTotalTotal + ')');
+                    }
                 });
             });
         </script>
@@ -71,10 +136,28 @@
                         <td class="song-text">{{ item.whistle }}</td>
                         <td class="song-text">{{ item.active }}</td>
                         <td class="song-text">{{ item.total }}</td>
-                        <td class="song-text">{{ item.score }}</td>
+                        <td class="song-text">
+                            <div class="progress-bar {% if item.score >= 0.75 %}bg-success{% elif item.score >= 0.5 %}bg-warning{% else %}bg-danger{% endif %}" 
+                                role="progressbar" 
+                                style="width: {{ item.score * 100 }}%;" 
+                                aria-valuenow="{{ item.score * 100 }}" 
+                                aria-valuemin="0" 
+                                aria-valuemax="100">
+                               {{ (item.score * 100) | round(2) }}%
+                           </div>
+                        </td>
                     </tr>
                     {% endfor %}
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <th colspan="2" class="song-text">Totals</th>
+                        <th id="totalWhistle" class="song-text">0 (Page: 0)</th>
+                        <th id="totalActive" class="song-text">0 (Page: 0)</th>
+                        <th id="totalTotal" class="song-text">0 (Page: 0)</th>
+                        <th></th>
+                    </tr>
+                </tfoot>
             </table>
         </div>
     </div>
