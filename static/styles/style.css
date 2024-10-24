@@ -81,6 +81,7 @@ body {
     background: linear-gradient(135deg, #ff4500, #ff6347, #ff9900, #ff6347, #ff4500);
     background-size: 400% 400%;
     animation: flameMove 5s linear infinite;
+    box-shadow: 0 5px 20px rgba(255, 69, 0, 0.5);
     color: rgb(5, 6, 45);
     font-size: 1.25em;
     text-align: center;

@@ -3,9 +3,11 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Ankathi</title>
+        <title>Axon</title>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
+
+        <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
 
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css" />
@@ -142,8 +144,8 @@
                                 style="width: {{ item.score * 100 }}%;" 
                                 aria-valuenow="{{ item.score * 100 }}" 
                                 aria-valuemin="0" 
-                                aria-valuemax="100">
-                               {{ (item.score * 100) | round(2) }}%
+                                aria-valuemax="1">
+                               {{ (item.score) | round(2) }}
                            </div>
                         </td>
                     </tr>
