@@ -22,6 +22,7 @@ def get_current_song_and_check_playlists():
         played_count = 0
 
         return {
+                'title': current_track['item']['name'],
                 'current_song_uri': track_uri,
                 'played_count': played_count,
                 'song_image_url': current_track['item']['album']['images'][0]['url'],

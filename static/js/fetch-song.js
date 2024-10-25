@@ -18,6 +18,8 @@ setInterval(fetchCurrentSong, 5000);
 
 function updateAll(data) {
     if (cur_song != data.current_song_uri) {
+        document.title = 'Axon ~ ' + data.title
+        
         updateIndicator(data.normal, 'normal-playlist-indicator')
         updateIndicator(data.ultimate, 'ultimate-playlist-indicator')
         
