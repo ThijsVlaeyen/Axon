@@ -9,7 +9,7 @@ import os
 
 from routes import auth_bp, hist_bp, over_bp
 from services.overview_services import *
-from database import create_tables
+from services.spotify_db import create_tables
 
 app = Flask(__name__)
 app.register_blueprint(auth_bp)

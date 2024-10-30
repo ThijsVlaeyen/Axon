@@ -1,6 +1,5 @@
 from flask import Blueprint, render_template, jsonify, request
 from services.history_services import *
-from models import change_statistic
 
 hist_bp = Blueprint('hist_bp', __name__)
 
@@ -31,7 +30,7 @@ def change_stati():
     statistic_id = request.json.get('statistic_id')
     status = request.json.get('status')
     if statistic_id != '' and status != '':
-        change_statistic(statistic_id, status)
+        update_statistic(statistic_id, status)
         return jsonify({"status": "success", "received_value": request.json}), 200
     else:
         return jsonify({"status": "error", "message": "No value received"}), 400

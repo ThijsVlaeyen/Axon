@@ -1,7 +1,8 @@
 from datetime import datetime
 
+from .history_models import *
+
 def get_recent_songs():
-    from models import get_recent_songs_db
     from .overview_services import check_if_in_playlist, normal_playlist, ultimate_playlist
     
     recent_songs = get_recent_songs_db()
@@ -18,6 +19,9 @@ def get_recent_songs():
         }
         for song_id, title, artist, timestamp, status_name, statistic_id in recent_songs
     ]
+
+def update_statistic(statistic_id, status):
+    db_update_statistic(statistic_id, status)
 
 status = 2
 def set_status(stat):
