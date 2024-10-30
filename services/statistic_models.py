@@ -19,3 +19,17 @@ def db_get_statistics():
     
     conn.close()
     return rawstats
+
+def db_get_activity():
+    conn = get_db_connection()
+
+    result = conn.execute("""
+                SELECT DATE(timestamp) AS date, SUM(status_id) AS total_activity
+                FROM statistics
+                WHERE timestamp >= DATE('now', '-365 days') AND status_id = 1
+                GROUP BY DATE(timestamp)
+                ORDER BY DATE(timestamp)
+        """).fetchall()
+
+    conn.close()
+    return result

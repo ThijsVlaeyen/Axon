@@ -1,4 +1,4 @@
-from .statistic_models import db_get_statistics
+from .statistic_models import *
 
 def get_statistics():
     stats = []
@@ -13,3 +13,7 @@ def get_statistics():
         })
 
     return stats
+
+def get_activity():
+    activity_data = [{'date': row[0], 'total_activity': row[1]} for row in db_get_activity()]
+    return activity_data
