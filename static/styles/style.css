@@ -57,6 +57,10 @@ body {
     grid-template-columns: 100%;
 }
 
+.grid-container.strava {
+    grid-template-columns: 50% 50%;
+}
+
 .indicator {
     height: 50px;
     width: auto;

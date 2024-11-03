@@ -7,7 +7,7 @@ import atexit
 import time
 import os
 
-from routes import auth_bp, hist_bp, over_bp
+from routes import *
 from services.overview_services import *
 from services.spotify_db import create_tables
 
@@ -15,6 +15,7 @@ app = Flask(__name__)
 app.register_blueprint(auth_bp)
 app.register_blueprint(hist_bp)
 app.register_blueprint(over_bp)
+app.register_blueprint(strava_bp)
 
 socketio = SocketIO(app)
 

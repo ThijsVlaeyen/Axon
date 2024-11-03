@@ -1,4 +1,5 @@
 import time
+from datetime import datetime
 
 from .overview_models import *
 from .auth_services import get_spotify_client, get_all_users, set_active_user
@@ -67,6 +68,12 @@ def update_current_track():
     while True:
         try:
             print("Getting song...")
+
+            current_hour = datetime.now().hour
+            if current_hour < 8 or current_hour >= 17:
+                time.sleep(60)
+                continue
+
             users = get_all_users()
             
             for user in users:
@@ -95,6 +102,11 @@ def update_playlists():
     while True:
         try:
             print("Getting playlists...")
+            current_hour = datetime.now().hour
+            if current_hour < 8 or current_hour >= 17:
+                time.sleep(1800)
+                continue
+            
             normal_playlist = get_all_playlist_tracks(NORMAL_PLAYLIST_ID)
             ultimate_playlist = get_all_playlist_tracks(ULTIMATE_PLAYLIST_ID)
         except Exception as e:

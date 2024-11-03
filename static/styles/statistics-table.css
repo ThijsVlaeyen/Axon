@@ -33,7 +33,7 @@ option {
 .activity-container {
     display: grid;
     grid-template-columns: repeat(53, 17px);
-    grid-template-rows: repeat(7, 17px);
+    grid-template-rows: repeat(5, 17px);
     gap: 2px;
     padding: 10px;
 }

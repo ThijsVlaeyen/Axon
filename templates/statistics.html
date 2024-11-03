@@ -41,7 +41,7 @@
                             <a href="{{ url_for('auth_bp.authenticate') }}">Authenticate</a>
                         </div>
                     </li>
-                    <li><a href="#">WIP</a></li>
+                    <li><a href="{{ url_for('strava_bp.strava') }}">Strava</a></li>
                 </ul>
             </nav><div class="spotify-embed"></div>
         </div>
@@ -59,7 +59,9 @@
                             <th class="song-text">Whistles</th>
                             <th class="song-text">Active plays</th>
                             <th class="song-text">Total plays</th>
-                            <th class="song-text">Score</th>
+                            <th class="song-text">Score1</th>
+                            <th class="song-text">Score2</th>
+                            <th class="song-text">Score3</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -71,13 +73,33 @@
                             <td class="song-text">{{ item.active }}</td>
                             <td class="song-text">{{ item.total }}</td>
                             <td class="song-text">
-                                <div class="progress-bar {% if item.score >= 0.75 %}bg-success{% elif item.score >= 0.5 %}bg-warning{% else %}bg-danger{% endif %}" 
+                                <div class="progress-bar {% if item.score1 >= 0.75 %}bg-success{% elif item.score1 >= 0.5 %}bg-warning{% else %}bg-danger{% endif %}" 
                                     role="progressbar" 
-                                    style="width: {{ item.score * 100 }}%;" 
-                                    aria-valuenow="{{ item.score * 100 }}" 
+                                    style="width: {{ item.score1 * 100 }}%;" 
+                                    aria-valuenow="{{ item.score1 * 100 }}" 
                                     aria-valuemin="0" 
                                     aria-valuemax="1">
-                                   {{ (item.score) | round(2) }}
+                                   {{ (item.score1) | round(3) }}
+                               </div>
+                            </td>
+                            <td class="song-text">
+                                <div class="progress-bar {% if item.score2 >= 0.75 %}bg-success{% elif item.score2 >= 0.5 %}bg-warning{% else %}bg-danger{% endif %}" 
+                                    role="progressbar" 
+                                    style="width: {{ item.score2 * 100 }}%;" 
+                                    aria-valuenow="{{ item.score2 * 100 }}" 
+                                    aria-valuemin="0" 
+                                    aria-valuemax="1">
+                                   {{ (item.score2) | round(3) }}
+                               </div>
+                            </td>
+                            <td class="song-text">
+                                <div class="progress-bar {% if item.score3 >= 0.75 %}bg-success{% elif item.score3 >= 0.5 %}bg-warning{% else %}bg-danger{% endif %}" 
+                                    role="progressbar" 
+                                    style="width: {{ item.score3 * 100 }}%;" 
+                                    aria-valuenow="{{ item.score3 * 100 }}" 
+                                    aria-valuemin="0" 
+                                    aria-valuemax="1">
+                                   {{ (item.score3) | round(3) }}
                                </div>
                             </td>
                         </tr>

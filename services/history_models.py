@@ -7,7 +7,7 @@ def get_recent_songs_db():
     cursor = conn.cursor()
 
     now = datetime.now()
-    thirty_minutes_ago = now - timedelta(minutes=60)
+    thirty_minutes_ago = now - timedelta(minutes=600)
 
     cursor.execute('''
             SELECT song.song_id, song.title, song.artist, statistics.timestamp, status_name, statistics.statistic_id

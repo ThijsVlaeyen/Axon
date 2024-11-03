@@ -37,6 +37,8 @@ function createActivityGrid(activityData) {
         for (let week = 0; week < 53; week++) {
             const square = document.createElement('div');
             
+            if (day >= 5) continue;
+
             if ((week === 0 && day < currentDayOfWeek + 1) || (week === 52 && day > currentDayOfWeek)) {
                 square.classList.add('grid-item-blank');
                 gridContainer.appendChild(square);
@@ -47,13 +49,13 @@ function createActivityGrid(activityData) {
                 const count = activityData[week * 7 + day - currentDayOfWeek];
                 dayCount++
                 if (count === 0) {
-                } else if (count < 5) {
-                    square.classList.add('low-activity');
                 } else if (count < 10) {
+                    square.classList.add('low-activity');
+                } else if (count < 15) {
                     square.classList.add('medium-activity');
-                } else if (count < 20) {
+                } else if (count < 25) {
                     square.classList.add('high-activity');
-                } else if (count >= 20) {
+                } else if (count >= 25) {
                     square.classList.add('very-high-activity');
                 }
                 gridContainer.appendChild(square);
