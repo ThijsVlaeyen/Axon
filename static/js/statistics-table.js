@@ -2,7 +2,7 @@ $(document).ready(function() {
     $('#statisticsTable').DataTable({
         paging: true,
         searching: true,
-        order: [[7, 'desc']],
+        order: [[5, 'desc']],
         drawCallback: function() {
             var api = this.api();
 

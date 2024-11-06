@@ -9,9 +9,7 @@ def get_statistics():
             'whistle': stat['whistle'],
             'active': stat['active'],
             'total': stat['total'],
-            'score1': stat['score1'],
-            'score2': stat['score2'],
-            'score3': stat['score3']
+            'score': stat['score']
         })
 
     return stats
